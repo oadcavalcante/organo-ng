@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Livro } from './livro';
 
 @Component({
   selector: 'app-livro',
@@ -7,14 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './livro.component.css',
 })
 export class LivroComponent {
-  livro = {
-    titulo: 'Mais esperto que o diabo',
-    autoria: 'Napoleon Hill',
-    favorito: false,
-    imagem: 'capa-mais-esperto-que-o-diabo.jpg',
-  };
+  livro = input.required<Livro>();
 
   alternarFavorito() {
-    this.livro.favorito = !this.livro.favorito;
+    this.livro().favorito = !this.livro().favorito;
   }
 }
